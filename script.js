@@ -29,3 +29,10 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+// Smooth scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.getElementById('section--1');
+btnScrollTo.addEventListener('click', () =>
+  section1.scrollIntoView({ behavior: 'smooth' })
+);

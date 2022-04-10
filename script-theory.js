@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 ///////////////////////////////////////
 // Modal window
 
@@ -51,6 +51,7 @@ console.log(images); // html-collection of images
 */
 // Creating and inserting elements
 //
+/*
 // .insertAdjacentHTML
 const header = document.querySelector('.header');
 const message = document.createElement('div');
@@ -115,3 +116,4 @@ logo.classList.add('c');
 logo.classList.remove('c');
 logo.classList.toggle('c');
 logo.classList.contains('c');
+*/
