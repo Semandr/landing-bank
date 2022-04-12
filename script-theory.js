@@ -116,7 +116,7 @@ logo.classList.add('c');
 logo.classList.remove('c');
 logo.classList.toggle('c');
 logo.classList.contains('c');
-*/
+
 
 // generate random color
 const randomInt = (min, max) =>
@@ -139,3 +139,14 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
   console.log('NAV', e.target, e.currentTarget);
 });
+
+// Smooth scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.getElementById('section--1');
+btnScrollTo.addEventListener('click', () =>
+  section1.scrollIntoView({ behavior: 'smooth' })
+);
+
+
+
+*/
