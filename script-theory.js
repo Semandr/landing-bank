@@ -150,3 +150,29 @@ btnScrollTo.addEventListener('click', () =>
 
 
 */
+
+//////////////////////////////////////////////
+// DOM TRAVERSING
+//
+const h1 = document.querySelector('h1');
+// going downwards: child
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+
+const ul = document.querySelector('.nav__links');
+console.log(ul); // element itself
+console.log(ul.children);
+console.log(ul.children[0].children[0].textContent); // 'Features'
+
+// going upwards: parent
+console.log(h1.parentNode);
+h1.closest('.header').style.background = 'var(--gradient-secondary)';
+
+// Going sidewais: siblings
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.parentElement.children); // all of the siblings include itself
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.transform = 'scale(0.5)';
+});
