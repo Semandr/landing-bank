@@ -134,6 +134,31 @@ allSections.forEach(section => {
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
 });
+
+///////////////////////////////////////
+// LAZY LOADING IMAGES: INTERSECTION OBSERVER API
+//
+const imgTarget = document.querySelectorAll('img[data-src]');
+function loadImg(entries, observer) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+
+  // Replace 'src' with 'data-src'
+  entry.target.src = entry.target.dataset.src;
+  entry.target.addEventListener('load', () =>
+    entry.target.classList.remove('lazy-img')
+  );
+  // stop observing
+  observer.unobserve(entry.target);
+}
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  // rootMargin: '200px',
+});
+
+imgTarget.forEach(img => imgObserver.observe(img));
+
 /*
 
 
