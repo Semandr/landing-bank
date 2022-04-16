@@ -94,9 +94,9 @@ nav.addEventListener('mouseout', handlerHover.bind(1));
 // STIKY NAVIGATION: INTERSECTION OBSERVER API
 //
 
-///////////////////////////////////////////
 const header = document.querySelector('.header');
-const navHeight = nav.getBoundingClientRect().height; // dynamic calculation of hight of navigation for responsive web-site
+const navHeight = nav.getBoundingClientRect().height;
+// dynamic calculation of hight of navigation for responsive web-site
 function stickyNav(entries, observer) {
   const [entry] = entries;
   if (!entry.isIntersecting) nav.classList.add('sticky');
@@ -108,6 +108,32 @@ const headerObserver = new IntersectionObserver(stickyNav, {
   rootMargin: `-${navHeight}px`, // hight of the navigation
 });
 headerObserver.observe(header);
+
+///////////////////////////////////////
+// REVEAL SECTIONS: INTERSECTION OBSERVER API
+//
+const allSections = document.querySelectorAll('.section');
+
+function revealSection(entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  // stop observing -->
+  observer.unobserve(entry.target);
+}
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+
+allSections.forEach(section => {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
 /*
 
 
